@@ -11,11 +11,13 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	final int HEIGHT = 500;
 	Thread thread;
 	HumanPaddle p1;
+	Ball ball;
 	
 	public void init() {
 		this.resize(WIDTH, HEIGHT);
 		this.addKeyListener(this);
 		p1 = new HumanPaddle(2);
+		ball = new Ball();
 		thread = new Thread(this);
 		thread.start();
 	}
@@ -23,7 +25,14 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	public void paint(Graphics g) {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
-		p1.draw(g);
+		if (ball.getX() < -10 || ball.getX() > 710) {
+			g.setColor(Color.white);
+			g.drawString("GAME OVER", 350, 250);
+		} else {
+			p1.draw(g);
+			ball.draw(g);
+		}
+		
 	}
 	
 	public void update(Graphics g) {
@@ -33,6 +42,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
 	public void run() {
 		for (;;) {
 			p1.move();
+			ball.move();
 			repaint();
 			try {
 				Thread.sleep(10);

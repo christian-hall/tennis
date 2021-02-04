@@ -18,9 +18,9 @@ public class HumanPaddle implements Paddle{
 		y = 210;
 		yVel = 0;
 		if (player == 1) {
-			x = 20;
-		} else {
 			x = 660;
+		} else {
+			x = 20;
 		}
 		
 	}
