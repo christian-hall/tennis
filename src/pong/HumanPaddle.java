@@ -4,13 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class HumanPaddle implements Paddle{
-	double y;
-	double yVel;
-	boolean upAccel;
-	boolean downAccel;
-	final double GRAVITY = 0.94;
-	int player;
-	int x;
+	double y, yVel;
+	boolean upAccel, downAccel;
+	final double GRAVITY = 0.74;
+	int player, x;
 	
 	public HumanPaddle (int player) {
 		upAccel = false;
@@ -18,9 +15,9 @@ public class HumanPaddle implements Paddle{
 		y = 210;
 		yVel = 0;
 		if (player == 1) {
-			x = 660;
-		} else {
 			x = 20;
+		} else {
+			x = 660;
 		}
 		
 	}
@@ -46,7 +43,6 @@ public class HumanPaddle implements Paddle{
 			yVel = -5;
 		}
 		y += yVel;
-		
 		if (y < 0) { // keeps the paddles on the page
 			y = 0;
 		} else if (y > 420) { // 500 height - 80 paddle height
