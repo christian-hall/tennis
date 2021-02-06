@@ -25,7 +25,7 @@ public class AIPaddle implements Paddle{
 	}
 
 	public void draw(Graphics g) {
-		g.setColor(Color.white);
+		g.setColor(Color.red);
 		g.fillRect(x, (int)y, 20, 80);
 		
 	}
